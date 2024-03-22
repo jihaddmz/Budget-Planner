@@ -1,0 +1,4 @@
+#Fri Mar 22 14:10:12 EET 2024
+base.0=/Users/jihadmahfouz/Development/Projects/budget_planner/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

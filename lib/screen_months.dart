@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:budget_planner/components/card_month.dart';
 import 'package:budget_planner/helper_sharedpreferences.dart';
 import 'package:budget_planner/helper_sqlite.dart';
@@ -43,7 +45,7 @@ class _ScreenMonths extends State<ScreenMonths> {
   Future<void> fetchAllMonths() async {
     await HelperSqlite.getAllMonths().then((value) {
       setState(() {
-        _list = value;
+        _list = value.reversed.toList();
       });
     });
   }
@@ -51,11 +53,11 @@ class _ScreenMonths extends State<ScreenMonths> {
   Future<void> addMonth() async {
     DateTime dateTime = DateTime.now();
     var formattedDate = DateFormat.yMMMM().format(dateTime);
-    formattedDate = formattedDate.replaceFirst(" ", " 15 ");
+    // formattedDate = formattedDate.replaceFirst(" ", " 15 ");
 
     DateTime nextDateTime = dateTime.add(const Duration(days: 31));
     var nextFormattedDate = DateFormat.yMMMM().format(nextDateTime);
-    nextFormattedDate = nextFormattedDate.replaceFirst(" ", " 15 ");
+    // nextFormattedDate = nextFormattedDate.replaceFirst(" ", " 15 ");
 
     formattedDate = "$formattedDate - $nextFormattedDate";
 
@@ -141,7 +143,6 @@ class _ScreenMonths extends State<ScreenMonths> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: const Text("Budget Planner"),
@@ -188,8 +189,11 @@ class _ScreenMonths extends State<ScreenMonths> {
           ),
         ],
       ),
-      body: Column(
-        children: widgetsOfMonths(context),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.only(bottom: 20),
+        child: Column(
+          children: widgetsOfMonths(context),
+        ),
       ),
     );
   }

@@ -69,7 +69,7 @@ class _ScreenCtegories extends State<ScreenCategories> {
         await HelperSqlite.insertCategory(ModelCategory(
             category: "Home",
             date: widget.modelMonth.date,
-            budget: (100 +
+            budget: (120 +
                     (modelCategory == null
                         ? 0
                         : (modelCategory.budget - modelCategory.paid)))
@@ -83,7 +83,7 @@ class _ScreenCtegories extends State<ScreenCategories> {
         await HelperSqlite.insertCategory(ModelCategory(
             category: "Shopping",
             date: widget.modelMonth.date,
-            budget: (50 +
+            budget: (80 +
                     (modelCategory == null
                         ? 0
                         : (modelCategory.budget - modelCategory.paid)))
@@ -125,7 +125,7 @@ class _ScreenCtegories extends State<ScreenCategories> {
         await HelperSqlite.insertCategory(ModelCategory(
             category: "Food",
             date: widget.modelMonth.date,
-            budget: (150 +
+            budget: (200 +
                     (modelCategory == null
                         ? 0
                         : (modelCategory.budget - modelCategory.paid)))

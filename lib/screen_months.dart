@@ -89,7 +89,10 @@ class _ScreenMonths extends State<ScreenMonths> {
             for (var category in list) {
               paids += category.paid;
             }
-            savings = await HelperSharedPreferences.getSalary() - paids;
+            var salary = list
+                .firstWhere((element) => element.category == "Salary")
+                .budget;
+            savings = salary - paids;
             await HelperSqlite.updateMonthSavings(element, savings);
             setState(() {
               element.savings = savings;

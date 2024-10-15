@@ -9,6 +9,8 @@ Widget CardCategory(ModelCategory modelCategory, BuildContext context,
   TextEditingController _controllerCategory = TextEditingController();
 
   return Card(
+    color:
+        modelCategory.category == "Salary" ? Colors.blue : Colors.blueGrey[50],
     child: Column(
       children: [
         Padding(

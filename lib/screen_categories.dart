@@ -43,6 +43,12 @@ class _ScreenCtegories extends State<ScreenCategories> {
     await HelperSqlite.getAllCategories(widget.modelMonth.date)
         .then((value) async {
       if (value.isEmpty) {
+        await HelperSqlite.insertCategory(ModelCategory(
+            category: "Salary",
+            date: widget.modelMonth.date,
+            budget: 2000.roundToDouble(),
+            paid: 0));
+
         List<ModelMonth> listOfMonths = await HelperSqlite.getAllMonths();
 
         ModelCategory? modelCategory;
@@ -132,7 +138,7 @@ class _ScreenCtegories extends State<ScreenCategories> {
                 .roundToDouble(),
             paid: 0));
 
-            if (listOfMonths.length >= 2) {
+        if (listOfMonths.length >= 2) {
           modelCategory = await HelperSqlite.getCategoryByDateAndCategory(
               listOfMonths[listOfMonths.length - 2].date, "Health & Gym");
         }
